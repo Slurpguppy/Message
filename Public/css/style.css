@@ -1,0 +1,699 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+
+:root {
+	--dark-color-a: #1b1b1b;
+	--dark-color-b: #1b1b1b;
+	--light-color: #424242;
+	--green-color: #21a14e;
+	--error-color: #d9534f;
+
+    --test-color-a: #1b1b1b;
+}
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 16px;
+	background: var(--light-color);
+}
+
+.the-holy-button {
+    background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+}
+
+
+.btn {
+	cursor: pointer;
+	padding: 10px 20px;
+	background: #21a14e;
+	color: var(--dark-color-a);
+	border: 0;
+	font-size: 17px;
+	border-radius: 5px;
+	transition: 0.1s ease-in, color 0.1s ease-in, transform 0.1s ease-in;
+	width: 20%;
+}
+
+.popupbtn {
+	right: 28px;
+	cursor: pointer;
+	padding: 10px 20px;
+	background: #21a14e;
+	color: var(--dark-color-a);
+	border: 0;
+	font-size: 17px;
+	border-radius: 5px;
+	transition: 0.1s ease-in, color 0.1s ease-in, transform 0.1s ease-in;
+	position: fixed;
+}
+
+.popupbtn:hover {
+    background: rgb(39, 39, 39); 
+    color: #fff; 
+}
+
+.btn:hover {
+    background: #1c8a43; 
+    color: #fff; 
+}
+
+.sendbtn {
+    cursor: pointer;
+    padding: 10px 20px;
+    background: #21a14e;
+    color: var(--dark-color-a);
+    border: 0;
+    font-size: 17px;
+    border-radius: 50px;
+    transform: scale(1); 
+    transition: transform 0.1s ease-in-out; 
+	margin-left: 7px;
+}
+
+.sendbtn:hover {
+    color: #fff; 
+    transform: scale(1.1); 
+}
+
+.room-name{
+	position: fixed;
+	left: 5%;
+}
+
+/* user btn */
+
+.user-btn {
+    right: 125px;
+	cursor: pointer;
+	padding: 10px 20px;
+	background: #21a14e;
+	color: var(--dark-color-a);
+	border: 0;
+	font-size: 17px;
+	border-radius: 5px;
+	transition: 0.1s ease-in, color 0.1s ease-in, transform 0.1s ease-in;
+	position: fixed;
+}
+
+.user-btn:hover {
+    background: rgb(39, 39, 39); 
+    color: #fff; 
+}
+
+/* Chat Page */
+
+.chat-container {
+	background: #0b0b0b;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+}
+
+.chat-header {
+	background: var(--dark-color-a);
+	color: #fff;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	padding: 10px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 75px;
+}
+
+.chat-main {
+	display: block;
+	grid-template-columns: 1fr 3fr;
+}
+
+.chat-sidebar {
+    background: var(--dark-color-b);
+    color: #f3f3f3;
+    overflow-y: scroll; /* Add this line */
+	width: 100%;
+	height: 100px;
+}
+
+.chat-sidebar h2 {
+	font-size: 20px;
+	background: rgba(0, 0, 0, 0.1);
+	padding: 10px;
+	margin-bottom: 20px;
+}
+
+.chat-sidebar h3 {
+	margin-bottom: 15px;
+}
+
+.chat-sidebar ul li {
+	padding: 10px 0;
+	height: 100px;
+	width: 100%;
+	border-bottom: #424242 solid 1px;
+	font-size: 20px;
+}
+
+/* Container for sidebar */
+
+
+
+
+.chat-sidebar::-webkit-scrollbar {
+    width: 10px;
+	border-radius: 50px;
+}
+
+.chat-sidebar:-webkit-scrollbar-track {
+    background: #8e373700; 
+}
+
+.chat-sidebar::-webkit-scrollbar-thumb {
+    background: rgb(66, 66, 66);
+	border-radius: 50px;
+	padding-bottom: 5px;
+}
+
+.chat-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #21a14e;
+}
+
+
+
+.chat-messages {
+    padding: 30px;
+    height: calc(100vh - 148px);
+    overflow-y: scroll;
+    color: #f3f3f3;
+    text-align: center; /* Ensure messages align to the left */
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 10px;
+	border-radius: 50px;
+}
+
+.chat-messages::-webkit-scrollbar-track {
+    background: #8e373700; 
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background: rgb(66, 66, 66);
+	border-radius: 50px;
+	padding-bottom: 5px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #21a14e;
+}
+
+::-webkit-scrollbar-track-piece {
+    background-color: #f1f1f100; 
+    margin-bottom: 3px; 
+}
+
+.chat-messages .message {
+    display: block; /* Make each message occupy the full width available */
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: rgb(66, 66, 66);
+    border-radius: 15px 15px 5px 15px;
+    font-size: 16px;
+    transition: 0.1s ease-in, color 0.1s ease-in, transform 0.1s ease-in;
+    max-width: fit-content; /* Adjust width to fit the content */
+    word-wrap: break-word; /* Ensure long words wrap properly */
+    text-align: left; /* Text inside the message stays aligned left */
+	left: 10px;
+	margin-left: auto;
+}
+
+.message:hover {
+    background: rgb(39, 39, 39); 
+    color: #fff; 
+    transform: scale(1.1); 
+}
+
+.chat-messages .message .meta {
+	font-size: 15px;
+	color:#21a14e;
+	opacity: 0.7;
+	margin-bottom: 7px;
+}
+
+.chat-messages .message .meta span {
+	color: #f3f3f3;
+	font-size: 13px;
+}
+
+.chat-form-container {
+    background-color: var(--dark-color-a);
+    padding: 20px 30px;
+    position: fixed; 
+    bottom: 0; 
+    width: 100%;
+}
+
+.chat-form-container form {
+	display: flex;
+}
+
+.chat-form-container input[type='text'] {
+	font-size: 16px;
+	padding: 5px 20px;
+	height: 40px;
+	flex: 1;
+}
+
+.text-send {
+	border-radius: 50px;
+	background: #1b1b1b;
+	border-style: none;
+	border: #f3f3f339 solid 1px;
+	color: #fff;
+	
+}
+
+.text-send:hover {
+    background: #262626;
+    color: #fff; 
+}
+
+.text-send::placeholder {
+    padding: 5px 1px;
+}
+
+@keyframes messageSent {
+    0% {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message {
+    padding: 10px;
+    margin-bottom: 15px;
+    background-color: rgb(66, 66, 66);
+    border-radius: 15px 15px 5px 15px;
+    font-size: 16px;
+    opacity: 0;
+    animation: messageSent 0.5s ease forwards;
+}
+
+
+/* Join Page */
+.join-container {
+	max-width: 500px;
+	margin: 80px auto;
+	color: #fff;
+}
+
+.join-header {
+	text-align: center;
+	padding: 20px;
+	background: var(--dark-color-a);
+	border-radius:20px 20px 0 0 ;
+    position: fixed;
+    width: 501px;
+    height: 300px;
+    top: 20%;
+}
+
+.join-main {
+	padding: 30px 40px;
+	background: var(--dark-color-b);
+	border-radius:  0 0 20px 20px;
+    position: fixed;
+    top: 35%;
+}
+
+.join-main p {
+	margin-bottom: 20px;
+}
+
+.join-main .form-control {
+	margin-bottom: 20px;
+}
+
+.join-main label {
+	display: block;
+	margin-bottom: 5px;
+}
+
+.join-main input[type='text'] {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	width: 100%;
+}
+
+.join-main select {
+	font-size: 16px;
+	padding: 5px;
+	height: 40px;
+	width: 100%;
+}
+
+.join-main .btn {
+	margin-top: 20px;
+	width: 100%;
+}
+
+
+
+/* Slide in animation */
+@keyframes slideInFromBottom {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Slide out animation */
+@keyframes slideOutToBottom {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+}
+
+.popup {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    overflow: auto;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+/* Animation when showing the popup */
+.popup.show {
+    animation-name: slideInFromBottom;
+}
+
+/* Animation when hiding the popup */
+.popup.hide {
+    animation-name: slideOutToBottom;
+}
+
+.popup-header {
+	width: 100%;
+	height: 50px;
+	background: whitesmoke;
+}
+
+.popup-header-search {
+	background: var(--dark-color-b);
+    color: #f3f3f3;
+    overflow-y: scroll; /* Add this line */
+	width: 100%;
+	height: 50px;
+	border-top: 1px solid #cccccc2a;
+	border-bottom: 1px solid #cccccc2a;
+}
+
+#search-btn {/* no idea what this is but it removes the small white dot */
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 0;
+	margin-left: 10px; 
+  }
+
+.room-search-bar {
+    border-radius: 50px;
+    background: #1b1b1b;
+    border-style: none;
+    border: #f3f3f339 solid 1px;
+    color: #fff;
+    padding: 5px 15px;
+    position: fixed;
+    width: 75vw; /* Set width to 75% of the viewport width */
+    left: 50%;
+	top: 111px;
+    transform: translateX(-50%); /* Center the search bar horizontally */
+    
+}
+
+.room-search-bar:hover {
+    background: #262626;
+    color: #fff; 
+}
+
+.fa-search {
+    position: absolute;
+    right: 14.5%; /* Set the icon's position relative to its container */
+    top: 124px;
+    transform: translateY(-50%); /* Center the icon vertically */
+	color: #424242;
+}
+
+
+
+.close-btn {
+    position: absolute;
+    top: 30px; /* Adjusted to be within the content */
+    right: 20px; /* Adjusted to be within the content */
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.fa-user-plus {
+    position: fixed;
+    top: 40px; /* Adjusted to be within the content */
+    left: 20px; /* Adjusted to be within the content */
+    font-size: 20px;
+    cursor: pointer;
+	color: #fff;
+}
+
+#add-user-btn {
+    background: none; /* Remove background */
+    border: none;     /* Remove border */
+    padding: 0;       /* Remove padding */
+    margin: 0;        /* Remove margin */
+}
+
+
+/* popup/chats page scrool bar */
+
+.popup::-webkit-scrollbar {
+    width: 10px;
+	border-radius: 50px;
+}
+
+.popup::-webkit-scrollbar-track {
+    background: #8e373700; 
+}
+
+.popup::-webkit-scrollbar-thumb {
+    background: rgb(66, 66, 66);
+	border-radius: 50px;
+	padding-bottom: 5px;
+}
+
+.popup::-webkit-scrollbar-thumb:hover {
+    background: #21a14e;
+}
+
+.popup::-webkit-scrollbar-track-piece {
+    background-color: var(--dark-color-a); 
+}
+
+.room-item {
+	display: flex;
+    flex-direction: column;
+
+	justify-content: flex-start;
+	padding: 10px;
+    padding-left: 25px;
+	border-bottom: 1px solid #cccccc2a;
+	cursor: pointer;
+	transition: background-color 0.3s;
+	height: 80px;
+	background: #0b0b0b;
+	color: #fff;
+}
+
+ Add padding-like space around the text 
+.room-item::before,
+.room-item::after {
+	content: "";
+	display: inline-block;
+	width: 10px; 
+}
+
+
+.room-item:hover {
+	background: rgb(39, 39, 39); 
+}
+
+.room-item i.fa-arrow-right {
+	font-size: 16px;
+	color: #fff;
+	right: 50px; /* Add some space between the room name and the arrow */
+	transition: transform 0.3s;
+	position: fixed;
+}
+
+.room-item:hover i.fa-arrow-right {
+	transform: translateX(5px); /* Move the arrow slightly to the right on hover */
+}
+
+.Tap-to-chat {
+    font-size: 0.85em; /* Smaller font size for "tap to chat" */
+    color: #666; /* Lighter color */
+    margin-top: 20px;
+}
+  
+/* add user popup */
+
+.add-user-popup {
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2000;
+    overflow: auto;
+    animation-duration: 0.5s;
+    animation-fill-mode: both;
+}
+
+/* Styles for the popup content */
+.add-user-popup-content {
+    background-color: #1b1b1b;
+    
+    padding: 20px;
+    border: 1px solid #888;
+	height: 100%;
+    width: 100%; /* Set a max width for large screens */
+    position: relative; /* Allows positioning of close button */
+	color: #fff;
+}
+
+#user-search {
+    border-radius: 50px;
+    background: #1b1b1b;
+    border-style: none;
+    border: #f3f3f339 solid 1px;
+    color: #fff;
+    padding: 5px 15px;
+    position: fixed;
+    width: 75vw; /* Set width to 75% of the viewport width */
+    left: 50%;
+	top: 38px;
+    transform: translateX(-50%); /* Center the search bar horizontally */
+}
+
+#user-search:hover {
+    background: #262626;
+    color: #fff; 
+}
+
+#user-dropdown {
+    width: 100%;
+    max-height: 80%; /* Limit the height for scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    display: block;
+	margin-top: 80px;
+	border: #f3f3f334 solid 1px;
+	border: none;
+	background-color: #1b1b1b;
+}
+
+#user-dropdown option {
+    padding: 8px; /* Padding for each option */
+    background-color: #1b1b1b; /* Background color */
+    color: #fff; /* Text color */
+	font-size: large;
+}
+
+.user-page-mag-icon {
+    position: absolute;
+    right: 14.5%; /* Set the icon's position relative to its container */
+    top: 10px;
+    transform: translateY(-50%); /* Center the icon vertically */
+	color: #424242;
+}
+
+/* Hover effect for options */
+#user-dropdown option:hover {
+    background-color: #e0e0e0; /* Background color on hover */
+    color: #000; /* Text color on hover */
+}
+
+/* Close button */
+.close-user-popup-btn {
+    position: absolute;
+    top: 30px; /* Adjusted to be within the content */
+    right: 20px; 
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.close-user-popup-btn:hover,
+.close-user-popup-btn:focus {
+    
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* user popup scrool bar */
+
+#user-dropdown::-webkit-scrollbar {
+    width: 10px;
+	border-radius: 50px;
+}
+
+#user-dropdown::-webkit-scrollbar-track {
+    background: #8e373700; 
+}
+
+#user-dropdown::-webkit-scrollbar-thumb {
+    background: rgb(66, 66, 66);
+	border-radius: 50px;
+	padding-bottom: 5px;
+}
+
+#user-dropdown::-webkit-scrollbar-thumb:hover {
+    background: #21a14e;
+}
+
+#user-dropdown::-webkit-scrollbar-track-piece {
+    background-color: var(--dark-color-a); 
+}

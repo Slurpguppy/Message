@@ -1,0 +1,197 @@
+this is the real one
+
+
+
+/ChatApp
+  />node_modules
+- server.js
+- db.js
+- package-lock.json
+- package.json
+  /public
+  - index.html
+  - chat.html
+  - favicon.png
+    /css
+     - style.css
+    /js
+     - main.js
+     - join.js
+   
+    /utils
+    - messages.js
+    - users.js
+
+
+
+
+
+
+
+
+
+
+
+<div class="chat-sidebar">
+        <h3><i class="fas fa-comments"></i> Room Name:</h3>
+        <h2 id="room-name"></h2>
+        <h3><i class="fas fa-users"></i> Users</h3>
+        <select id="user-dropdown">
+          <option value="">Select User</option>
+        </select>
+      </div>
+
+// server.js back up 
+
+
+const express = require("express");
+const app = express();
+const http = require("http").createServer(app);
+const io = require("socket.io")(http);
+const formatMessage = require('./utils/messages');
+const {userJoin, getCurrentUser} = require('./utils/users');
+
+app.use(express.static('public')); // Serve static files from the 'public' directory
+
+app.get('/socket.io/socket.io.js', (req, res) => {
+  res.sendFile(__dirname + '/node_modules/socket.io/client-dist/socket.io.js');
+});
+
+// Run when user connects
+io.on('connection', socket => {
+  socket.on('joinRoom', ({username, room}) => {
+    const user = userJoin(socket.id, username, room);
+
+    socket.join(user.room);
+
+    //send user and room info
+    io.to(user.room).emit('roomUsers', {
+      room: user.room,
+      //users: getRoomUsers(user.room)
+    });
+  });
+
+  // Listen for user chat messages
+  socket.on('chatMessage', msg => {
+    const user = getCurrentUser(socket.id);
+
+    io.to(user.room).emit('message', formatMessage(user.username, msg));
+  });
+});
+
+// ...
+const connectDB = require('./db');
+
+// ...
+
+io.on('connection', async socket => {
+  // ...
+
+  // Listen for user chat messages
+  socket.on('chatMessage', async msg => {
+    const user = getCurrentUser(socket.id);
+    const db = await connectDB();
+    const collection = db.collection('messages'); // Replace 'messages' with your collection name
+
+    const newMessage = {
+      username: user.username,
+      message: msg,
+      room: user.room,
+      timestamp: new Date()
+    };
+
+    await collection.insertOne(newMessage);
+
+    io.to(user.room).emit('message', formatMessage(user.username, msg));
+  });
+});
+
+// ...
+
+http.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+
+// main.js backup file
+
+const chatForm = document.getElementById('chat-form');
+const chatMessages = document.querySelector('.chat-messages');
+const roomName = document.getElementById('room-name');
+const userList = document.getElementById('users');
+
+//get username and room from ulr
+const { username, room } = Qs.parse(location.search, {
+  ignoreQueryPrefix: true
+});
+
+console.log(username, room);
+
+const socket = io();
+
+//join chatroom
+socket.emit('joinRoom', { username, room });
+
+//get room and users
+socket.on('roomUsers', ({ room, users }) => {
+  outputRoomName(room);
+  outputUsers(users);
+});
+
+//message from server
+socket.on('message', message => {
+    console.log(message);
+    outputMessage(message)
+
+//scroll down
+chatMessages.scrollTop = chatMessages.scrollHeight;
+
+});
+
+//message submit
+chatForm.addEventListener('submit',(e) =>{
+  e.preventDefault();
+
+  const msg = e.target.elements.msg.value;
+
+  //send message to server 
+  socket.emit('chatMessage',msg);
+
+  //clear input after message sent
+  e.target.elements.msg.value = '';
+  e.target.elements.msg.focus();
+});
+
+// Output message to DOM
+function outputMessage(message) {
+  const div = document.createElement('div');
+  div.classList.add('message');
+  div.innerHTML = `
+    <p class="meta">${message.username} <span>${message.time}</span></p>
+    <p class="text">${message.text}</p>
+  `;
+  document.querySelector('.chat-messages').appendChild(div);
+}
+
+//add room name to dom
+function outputRoomName(room) {
+  roomName.innerText = room;
+}
+
+//add users to dom
+function outputUsers(users) {
+  
+}
+
+// Assuming you're using a front-end framework like React or Vue.js
+
+// ...
+
+socket.on('message', message => {
+  const room = document.getElementById('room-name').innerText;
+
+  if (message.room === room) {
+    // Display the message in the current room
+  }
+});
+
+// ...

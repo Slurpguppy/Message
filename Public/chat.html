@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="favicon.png" type="image/png">
+  <title>ChatApp</title>
+</head>
+<body>
+  <div class="chat-container">
+    <header class="chat-header">
+      <h1 class="room-name" id="room-name"></h1>
+      <a id="user-info" class="user-btn"></a>
+      <button class="popupbtn" id="open-popup">Chats</button>
+    </header>
+    <main class="chat-main">
+      <div id="add-user-popup" class="add-user-popup">
+        <div class="add-user-popup-content">
+          <span id="close-user-popup" class="close-user-popup-btn">×</span>
+          <input type="text" id="user-search" placeholder="Search for users..." autocomplete="off">
+          <select id="user-dropdown" size="100">
+            <option value="">Select User</option>
+          </select>
+        </div>
+      </div>
+      <div id="popup" class="popup">
+        <div class="popup-content">
+          <div class="popup-header">
+            <div class="chat-sidebar">
+              <img src="favicon.png" alt="Logo" style="height: 60px; position: fixed; right:48%; top: 20px;">
+              <button id="add-user-btn"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
+              <span id="close-popup" class="close-btn">×</span>
+             
+              <button class="the-holy-button" id="add-room-button"></button>
+            </div>
+            <div class="popup-header-search">
+              <input class="room-search-bar" type="text" id="search-bar" placeholder="Search Chats" autocomplete="off">
+              <button id="search-btn"><i class="fas fa-search"></i></button>
+            </div>
+            <ul id="room-list"></ul>
+            <form id="create-room-form"></form>
+          </div>
+        </div>
+      </div>
+      <div class="chat-messages  my-message"></div>
+    </main>
+    <div class="chat-form-container">
+      <form id="chat-form">
+        <input class="text-send" id="msg" type="text" placeholder="Enter Message" required autocomplete="off">
+        <button class="sendbtn"><i class="fas fa-paper-plane"></i> Send</button>
+      </form>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.2/qs.min.js" integrity="sha512-f0AM6x08kthGzMyDHZjBgjBCPp8V8ovlHYCI1jMkhViTeX3MykGCf/DnN1khWss/6d1105eAG4TniSKy6UhZrw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/login.js"></script>
+  
+</body>
+</html>
