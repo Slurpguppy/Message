@@ -6,12 +6,18 @@ const { userJoin, getCurrentUser, getRoomUsers, userLeave } = require('./utils/u
 const formatMessage = require('./utils/messages');
 const { getUserRooms } = require('./utils/rooms');
 
+
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
 app.use(express.static('public'));
 app.use(express.json()); // Middleware to parse JSON bodies
+
+// Serve the main page
+app.get('/', (req, res) => {
+  res.sendFile(__dirname + 'Public\chat.html');
+});
 
 // Serve Socket.io client library
 app.get('/socket.io/socket.io.js', (req, res) => {
@@ -176,9 +182,6 @@ io.on('connection', (socket) => {
   });
 });
 
-server.listen(3000, () => {
-  console.log('Server is running on port 3000');
-});
 
 // Endpoint to create a private room via HTTP
 app.post('/create-private-room', async (req, res) => {
@@ -209,4 +212,9 @@ app.post('/create-private-room', async (req, res) => {
     console.error('Error creating private room:', error);
     res.status(500).send('Internal Server Error');
   }
+});
+
+const PORT = process.env.PORT || 3000;
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });
