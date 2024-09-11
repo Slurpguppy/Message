@@ -214,8 +214,7 @@ app.post('/create-private-room', async (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 3000;
-
+const PORT = process.env.PORT || 3000; // Fallback to 3000 if PORT is not defined (e.g., locally)
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
