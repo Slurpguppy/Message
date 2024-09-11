@@ -6,7 +6,6 @@ const { userJoin, getCurrentUser, getRoomUsers, userLeave } = require('./utils/u
 const formatMessage = require('./utils/messages');
 const { getUserRooms } = require('./utils/rooms');
 
-
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
@@ -215,6 +214,8 @@ app.post('/create-private-room', async (req, res) => {
 });
 
 
-server.listen(3000, () => {
-  console.log('Server is running on port 3000');
+const PORT = process.env.PORT || 3000;
+
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

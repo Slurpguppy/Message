@@ -486,6 +486,3 @@ function removeNumbersFromOptions() {
 // Call the function to apply the changes
 removeNumbersFromOptions();
 
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
