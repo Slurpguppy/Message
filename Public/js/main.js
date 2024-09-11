@@ -137,7 +137,7 @@ async function populateDropdown() {
     const users = await response.json();
     console.log('Fetched users:', users);
 
-    userDropdown.innerHTML = '<option value="">Select User</option>'; // Reset dropdown
+    userDropdown.innerHTML = '<option value="">Add user</option>'; // Reset dropdown
 
     users.forEach(user => {
       const option = document.createElement('option');
@@ -197,6 +197,11 @@ function addRoomToList(room) {
   arrowIcon.classList.add('fa', 'fa-arrow-right');
   arrowIcon.setAttribute('aria-hidden', 'true');
   li.appendChild(arrowIcon);
+
+  const userIcon = document.createElement('i');
+  userIcon.classList.add('fa', 'fa-user-circle-o'); // Font Awesome user icon
+  userIcon.setAttribute('aria-hidden', 'true');
+  li.appendChild(userIcon); // Append the user icon to the 'li'
 
   roomList.appendChild(li);
 
@@ -480,3 +485,7 @@ function removeNumbersFromOptions() {
 
 // Call the function to apply the changes
 removeNumbersFromOptions();
+
+const PORT = process.env.PORT || 3000;
+
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

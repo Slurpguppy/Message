@@ -16,7 +16,7 @@ app.use(express.json()); // Middleware to parse JSON bodies
 
 // Serve the main page
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + 'Public\chat.html');
+  res.sendFile(__dirname + '/public/index.html');
 });
 
 // Serve Socket.io client library
@@ -214,7 +214,7 @@ app.post('/create-private-room', async (req, res) => {
   }
 });
 
-const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+
+server.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });

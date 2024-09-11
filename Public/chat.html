@@ -6,14 +6,14 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon.png" type="image/png">
-  <title>ChatApp</title>
+  <title>Willy Messages</title>
 </head>
 <body>
   <div class="chat-container">
     <header class="chat-header">
       <h1 class="room-name" id="room-name"></h1>
-      <a id="user-info" class="user-btn"></a>
-      <button class="popupbtn" id="open-popup">Chats</button>
+      <button class="popupbtn" id="open-popup"><i class="fa fa-bars" aria-hidden="true"></i></button>
+      
     </header>
     <main class="chat-main">
       <div id="add-user-popup" class="add-user-popup">
@@ -29,7 +29,11 @@
         <div class="popup-content">
           <div class="popup-header">
             <div class="chat-sidebar">
-              <img src="favicon.png" alt="Logo" style="height: 60px; position: fixed; right:48%; top: 20px;">
+              <div class="logo-container">
+                <a id="user-info" class="user-btn"></a>
+                <button class="settings-btn"><i class="fas fa-user" style="color: #ffffff; font-size: 22px;" ></i></button>
+              <img src="favicon.png" class="logo-chat" alt="Logo">
+            </div>
               <button id="add-user-btn"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
               <span id="close-popup" class="close-btn">×</span>
              
@@ -49,7 +53,7 @@
     <div class="chat-form-container">
       <form id="chat-form">
         <input class="text-send" id="msg" type="text" placeholder="Enter Message" required autocomplete="off">
-        <button class="sendbtn"><i class="fas fa-paper-plane"></i> Send</button>
+        <button class="sendbtn"><i class="fas fa-paper-plane"></i><div class>Send</div></button>
       </form>
     </div>
   </div>
