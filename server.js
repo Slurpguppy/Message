@@ -69,6 +69,7 @@ io.on('connection', (socket) => {
     const user = userJoin(socket.id, username, room);
     socket.join(user.room);
 
+    
     // Store the user in the database
     const db = await connectDB();
     const usersCollection = db.collection('users');
