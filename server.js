@@ -11,12 +11,12 @@ const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-app.use(express.static('public'));
+app.use(express.static('Public'));
 app.use(express.json()); // Middleware to parse JSON bodies
 
 // Serve the main page
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  res.sendFile(path.join(__dirname, 'Public', 'index.html'));
 });
 
 // Serve Socket.io client library
@@ -69,7 +69,7 @@ io.on('connection', (socket) => {
     const user = userJoin(socket.id, username, room);
     socket.join(user.room);
 
-    
+
     // Store the user in the database
     const db = await connectDB();
     const usersCollection = db.collection('users');
