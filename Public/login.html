@@ -11,7 +11,29 @@
   <title>Willy Messages</title>
 </head>
 <body class="body">
-  <div class="header">
+  <ul class="background">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+  </ul>
+  <div class="login-header">
     <h1 class="logo" onclick="window.location.href='index.html'"> <img src="favicon.png" alt="Logo" style="height: 50px; position: relative; top: 10px;"></i><Div class="responsive-text">&nbsp;Willy Messages</Div></h1>
     <button class="loginbtn" onclick="window.location.href='login.html'">Login</button>
     <button class="downloadbtn" onclick="window.location.href='Download.html'">Download</button>
@@ -26,10 +48,7 @@
               <label for="username">Username</label>
               <input type="text" name="username" id="username" class="login-box" placeholder="Enter username" required />
           </div>
-          <div class="form-control">
-            <label for="password">Password:-In testing</label>
-            <input type="number" id="password" class="login-box" name="password" placeholder="Enter password" />
-        </div>
+         
           <button type="submit" class="btn">Join Chat</button>
       </form>
       
@@ -39,7 +58,22 @@
 </div>
 
   <script>
-      document.getElementById('username-form').addEventListener('submit', function(event) {
+      
+      
+  </script> 
+
+</body>
+</html>
+
+<!--
+to trun on password, and add required to box, and add the script and html.
+
+ <div class="form-control">
+            <label for="password">Password:-In testing</label>
+            <input type="number" id="password" class="login-box" name="password" placeholder="Enter password" />
+        </div>
+
+        document.getElementById('username-form').addEventListener('submit', function(event) {
           // Prevent the default form submission
           event.preventDefault();
 
@@ -53,12 +87,4 @@
           // Redirect to chat.html with the combined username as a URL parameter
           window.location.href = 'chat.html?username=' + encodeURIComponent(fullUsername);
       });
-      
-  </script> 
-
-</body>
-</html>
-
-<!--
-to trun on password, and add required to box.
 -->

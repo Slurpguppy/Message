@@ -30,13 +30,20 @@
           <div class="popup-header">
             <div class="chat-sidebar">
               <div class="logo-container">
-                <a id="user-info" class="user-btn"></a>
-                <button class="settings-btn"><i class="fas fa-user" style="color: #ffffff; font-size: 22px;" ></i></button>
+                <button id="open-profile-popup" class="settings-btn"><i class="fas fa-user" style="color: #ffffff; font-size: 22px;" ></i></button>
               <img src="favicon.png" class="logo-chat" alt="Logo">
             </div>
               <button id="add-user-btn"><i class="fa fa-user-plus" aria-hidden="true"></i></button>
               <span id="close-popup" class="close-btn">×</span>
-             
+          <!--profile popup-->
+             <div id="profile-popup" class="profile-popup">
+              <div class="profile-popup-content">
+                <a href="login.html" class="logout-btn">Logout</a>
+                <a id="user-info" class="user-btn"></a>
+                  <span id="close-profile-popup" class="close-profile-popup">&times;</span>
+              </div>
+          </div>
+          <!--profile popup-->
               <button class="the-holy-button" id="add-room-button"></button>
             </div>
             <div class="popup-header-search">
@@ -62,6 +69,7 @@
   <script src="/socket.io/socket.io.js"></script>
   <script src="js/main.js"></script>
   <script src="js/login.js"></script>
+  <script src="js/profile-popup.js"></script>
   
 </body>
 </html>

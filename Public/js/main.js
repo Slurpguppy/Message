@@ -294,18 +294,24 @@ document.getElementById('close-popup').addEventListener('click', function() {
 
 // Function to open the add user popup
 document.getElementById('add-user-btn').addEventListener('click', function() {
-  document.getElementById('add-user-popup').style.display = 'block';
+  const popup = document.getElementById('add-user-popup');
+  popup.classList.remove('hide');
+  popup.classList.add('show');
 });
 
 // Function to close the add user popup
 document.getElementById('close-user-popup').addEventListener('click', function() {
-  document.getElementById('add-user-popup').style.display = 'none';
+  const popup = document.getElementById('add-user-popup');
+  popup.classList.remove('show');
+  popup.classList.add('hide');
 });
 
 // Close the add user popup if the user clicks outside of the popup content
 window.onclick = function(event) {
-  if (event.target == document.getElementById('add-user-popup')) {
-    document.getElementById('add-user-popup').style.display = 'none';
+  const popup = document.getElementById('add-user-popup');
+  if (event.target == popup) {
+    popup.classList.remove('show');
+    popup.classList.add('hide');
   }
 };
 

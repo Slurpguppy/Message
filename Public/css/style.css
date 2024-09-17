@@ -125,7 +125,7 @@ a {
 /* user btn */
 
 .user-btn {
-    right: 100px;
+    left: 26px;
     top: 30px;
 	cursor: pointer;
 	padding: 10px 20px;
@@ -151,7 +151,7 @@ a {
 	border-radius: 5px;
 	transition: 0.1s ease-in, color 0.1s ease-in, transform 0.1s ease-in;
 	position: fixed;
-    z-index: 90000;
+    
 }
 
 .user-btn:hover {
@@ -375,8 +375,8 @@ a {
 	background: var(--dark-color-a);
 	border-radius:20px 20px 0 0 ;
     position: fixed;
-    width: 501px;
-    height: 300px;
+    width: 500px;
+    height: 285px;
     top: 20%;
 }
 
@@ -590,12 +590,10 @@ a {
 }
 
 .room-item {
-	display: flex;
-    flex-direction: column;
-
+    display: flex;
 	justify-content: flex-start;
-	padding: 10px;
-    padding-left: 25px;
+	align-items: center;
+	padding: 43px;
 	border-bottom: 1px solid #cccccc2a;
 	cursor: pointer;
 	transition: background-color 0.3s;
@@ -629,7 +627,7 @@ a {
 .room-item i.fa-arrow-right {
 	font-size: 16px;
 	color: #fff;
-    margin-top: 22px;
+    margin-top: 0px;
 	right: 50px; /* Add some space between the room name and the arrow */
 	transition: transform 0.3s;
 	position: fixed;
@@ -644,7 +642,7 @@ a {
     color: #666; /* Lighter color */
     margin-top: 20px;
 }
-  
+
 /* add user popup */
 
 .add-user-popup {
@@ -659,6 +657,33 @@ a {
     overflow: auto;
     animation-duration: 0.5s;
     animation-fill-mode: both;
+}
+
+@keyframes slideInFromLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutToLeft {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.add-user-popup.show {
+    display: block; /* Make it visible */
+    animation-name: slideInFromLeft;
+}
+
+.add-user-popup.hide {
+    animation-name: slideOutToLeft;
 }
 
 /* Styles for the popup content */
@@ -763,4 +788,84 @@ a {
 
 #user-dropdown::-webkit-scrollbar-track-piece {
     background-color: var(--dark-color-a); 
+}
+
+/* profile popup */
+
+.profile-popup {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    right: 0px;
+    top: 0;
+    width: 250px; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background: #1b1b1b;
+    background-color: rgb(63, 63, 63);
+    animation-duration: 0.4s;
+    animation-fill-mode: both;
+}
+
+.profile-popup-content {
+  
+}
+
+.logout-btn {
+    right: 132px;
+    top: 85px;
+	cursor: pointer;
+	padding: 10px 20px;
+	background: #21a14e;
+	color: var(--dark-color-a);
+	border: 0;
+	font-size: 17px;
+	border-radius: 5px;
+	transition: 0.1s ease-in, color 0.1s ease-in, transform 0.1s ease-in;
+	position: fixed;
+    z-index: 90000;
+}
+
+/* Add background btn hover */
+
+.close-profile-popup {
+    position: absolute;
+    top: 30px; /* Adjusted to be within the content */
+    right: 20px; /* Adjusted to be within the content */
+    font-size: 30px;
+    cursor: pointer;
+}
+
+.close-profile-popup:hover,
+.close-profile-popup:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.profile-popup.show {
+    animation-name: slideInFromRight;
+}
+
+/* Animation when hiding the popup */
+.profile-popup.hide {
+    animation-name: slideOutToRight;
+}
+
+@keyframes slideInFromRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideOutToRight {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(100%);
+    }
 }

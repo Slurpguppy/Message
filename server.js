@@ -6,11 +6,12 @@ const { userJoin, getCurrentUser, getRoomUsers, userLeave } = require('./utils/u
 const formatMessage = require('./utils/messages');
 const { getUserRooms } = require('./utils/rooms');
 
+
 const app = express();
 const server = http.createServer(app);
 const io = socketIo(server);
 
-app.use(express.static('ChatApp'));
+app.use(express.static('public'));
 app.use(express.json()); // Middleware to parse JSON bodies
 
 // Serve the main page
@@ -214,7 +215,6 @@ app.post('/create-private-room', async (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 3000; // Fallback to 3000 if PORT is not defined (e.g., locally)
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
+server.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });
