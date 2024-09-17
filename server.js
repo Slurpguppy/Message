@@ -5,7 +5,7 @@ const connectDB = require('./db');
 const { userJoin, getCurrentUser, getRoomUsers, userLeave } = require('./utils/users');
 const formatMessage = require('./utils/messages');
 const { getUserRooms } = require('./utils/rooms');
-
+const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
@@ -16,7 +16,7 @@ app.use(express.json()); // Middleware to parse JSON bodies
 
 // Serve the main page
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/public/index.html');
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Serve Socket.io client library
