@@ -438,13 +438,13 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // If username or room is still missing, redirect to login
   if (!username) {
-    window.location.href = 'http://localhost:3000/login.html';
+    window.location.href = https://message-davc.onrender.com/login.html';
     return;
   }
 
   // Ensure both username and room are in the URL
   if (!urlParams.has('username') || !urlParams.has('room')) {
-    window.location.href = `http://localhost:3000/chat.html?username=${encodeURIComponent(username)}&room=${encodeURIComponent(room)}`;
+    window.location.href = `https://message-davc.onrender.com/chat.html?username=${encodeURIComponent(username)}&room=${encodeURIComponent(room)}`;
     return;
   }
 
@@ -468,7 +468,7 @@ function joinRoom(newRoom) {
 
   // Update localStorage and URL with the new room
   localStorage.setItem('room', newRoom);
-  window.location.href = `http://localhost:3000/chat.html?username=${encodeURIComponent(username)}&room=${encodeURIComponent(newRoom)}`;
+  window.location.href = `https://message-davc.onrender.com/chat.html?username=${encodeURIComponent(username)}&room=${encodeURIComponent(newRoom)}`;
 }
 
 
