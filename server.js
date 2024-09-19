@@ -9,7 +9,14 @@ const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
-const io = socketIo(server);
+
+const io = socketIo(server, {
+  cors: {
+    origin: "https://message-davc.onrender.com", // Replace this with your Render app's URL
+    methods: ["GET", "POST"],
+    credentials: true
+  }
+});
 
 app.use(express.static('Public'));
 app.use(express.json()); // Middleware to parse JSON bodies

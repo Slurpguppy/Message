@@ -11,7 +11,7 @@ const { username, room } = Qs.parse(location.search, {
   ignoreQueryPrefix: true
 });
 
-const socket = io();
+const socket = io('https://message-davc.onrender.com');
 
 // Emit a joinRoom event when the user joins
 socket.emit('joinRoom', { username, room });
@@ -438,7 +438,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   // If username or room is still missing, redirect to login
   if (!username) {
-    window.location.href = https://message-davc.onrender.com/login.html';
+    window.location.href = 'https://message-davc.onrender.com/login.html';
     return;
   }
 
