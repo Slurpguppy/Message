@@ -9,10 +9,7 @@ const path = require('path');
 
 const app = express();
 const server = http.createServer(app);
-// is file een runniong?
-console.log('Server is starting...');
-const express = require("express");
-// is file een runniong?
+
 const io = socketIo(server, {
   cors: {
     origin: "https://message-davc.onrender.com", // Replace this with your Render app's URL
